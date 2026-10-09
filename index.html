@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>AI Tiffin & Event Services</title>
+<style>
+:root {
+  --green: #173b2b;
+  --lime: #d9f36a;
+  --orange: #ff784f;
+  --cream: #fff8ec;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: #18251e;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 6%;
+}
+.logo { font-size: 22px; font-weight: bold; }
+nav a {
+  text-decoration: none;
+  color: var(--green);
+  margin-left: 20px;
+  font-weight: bold;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+  padding: 55px 6%;
+}
+.hero h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: -3px;
+  line-height: 1;
+  margin: 20px 0;
+}
+.hero h1 span { color: #e95d36; }
+.hero p { color: #657168; line-height: 1.8; }
+.food-art {
+  background: linear-gradient(140deg, #dff18a, #b4d46e);
+  border-radius: 35px;
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+  font-size: 130px;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 20px;
+  border-radius: 30px;
+  background: var(--green);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 8px 5px 0 0;
+  transition: .2s;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn.orange { background: var(--orange); color: #222; }
+.banner {
+  padding: 20px;
+  text-align: center;
+  background: var(--green);
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+section { padding: 45px 6%; }
+h2 { font-size: 38px; letter-spacing: -1px; margin-bottom: 10px; }
+.subtitle { color: #657168; line-height: 1.7; margin-bottom: 25px; }
+
+/* Zomato Style Horizontal Scroll Categories */
+.category-title {
+  font-size: 24px;
+  color: var(--green);
+  margin: 35px 0 15px 0;
+  border-left: 4px solid var(--orange);
+  padding-left: 10px;
+}
+
+.menu-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 15px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for a clean look */
+.menu-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+.menu-scroll-container::-webkit-scrollbar-thumb {
+  background: #d4c5b9;
+  border-radius: 10px;
+}
+
+.card {
+  flex: 0 0 280px;
+  background: white;
+  padding: 22px;
+  border: 1px solid #eee8dc;
+  border-radius: 24px;
+  transition: .25s;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px #173b2b18;
+}
+.card .emoji { font-size: 38px; }
+.card h3 { font-size: 20px; margin: 10px 0 5px 0; }
+.price { color: #e95d36; font-size: 22px; font-weight: bold; }
+.card p { color: #657168; font-size: 14px; line-height: 1.6; min-height: 40px; }
+.featured { background: var(--green); color: white; }
+.featured p { color: #d2ddd5; }
+.featured .price { color: var(--lime); }
+.order {
+  display: inline-block;
+  color: #e95d36;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 15px;
+}
+.featured .order { color: var(--lime); }
+
+.special {
+  background: #f5e6d5;
+  text-align: center;
+}
+.special h2 { color: var(--green); }
+.contact {
+  background: var(--green);
+  color: white;
+  padding: 35px;
+  border-radius: 28px;
+}
+.contact p { color: #d2ddd5; line-height: 1.8; }
+.contact a { margin-bottom: 8px; }
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #657168;
+}
+.float {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #25c866;
+  color: #073b20;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 8px 25px #0002;
+  z-index: 100;
+}
+@media(max-width: 750px) {
+  header { flex-wrap: wrap; gap: 15px; }
+  nav a { margin-left: 10px; }
+  .hero { grid-template-columns: 1fr; padding-top: 25px; }
+  .food-art { min-height: 260px; }
+  h2 { font-size: 30px; }
+  .card { flex: 0 0 250px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍱 AI TIFFIN & EVENTS</div>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <p><b>✦ FRESHLY PREPARED IN KANPUR</b></p>
+    <h1>Ghar jaisa taste.<br><span>Har bite mein.</span></h1>
+    <p>Homely tiffin meals, delicious paratha thalis and food for your small celebrations. Fresh food, affordable prices and lots of care.</p>
+    <a class="btn orange" href="#menu">Explore Menu ↓</a>
+    <a class="btn" href="https://wa.me/917889505893">Order on WhatsApp</a>
+  </div>
+  <div class="food-art">🍛</div>
+</section>
+
+<div class="banner">
+  FRESH FOOD ✳ HOMELY TASTE ✳ SMALL EVENTS ✳
+</div>
+
+<section id="menu">
+  <h2>Made fresh. Priced fair.</h2>
+  <p class="subtitle">Choose your favourite item and swipe horizontally to explore more dishes.</p>
+
+  <!-- Category 1: Signature Thalis -->
+  <div class="category-title">🍱 Signature Thalis</div>
+  <div class="menu-scroll-container">
+    <article class="card">
+      <div>
+        <div class="emoji">🍲</div>
+        <h3>Normal Thali</h3>
+        <div class="price">₹100</div>
+        <p>Daal fry, seasonal sabzi, rice, 4 tawa rotis and pickle.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Normal%20Thali%20(₹100)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card featured">
+      <div>
+        <div class="emoji">🍛</div>
+        <h3>Special Thali</h3>
+        <div class="price">₹150</div>
+        <p>Daal, sabzi, paneer, raita, rice, 5 rotis, sweet, salad and pickle.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Special%20Thali%20(₹150)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🍽️</div>
+        <h3>Executive Thali</h3>
+        <div class="price">₹175</div>
+        <p>Daal, mix veg, paneer, raita, rice, tandoori & missi rotis, sweet and salad.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Executive%20Thali%20(₹175)">ORDER NOW ↗</a>
+    </article>
+  </div>
+
+  <!-- Category 2: Paratha Thalis -->
+  <div class="category-title">🫓 Paratha Specials</div>
+  <div class="menu-scroll-container">
+    <article class="card">
+      <div>
+        <div class="emoji">🫓</div>
+        <h3>Aloo Paratha</h3>
+        <div class="price">₹75</div>
+        <p>Served with butter, curd and pickle.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Aloo%20Paratha%20(₹75)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🫓</div>
+        <h3>Paneer Paratha</h3>
+        <div class="price">₹100</div>
+        <p>Stuffed with rich paneer filling, butter and curd.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Paneer%20Paratha%20(₹100)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🫓</div>
+        <h3>Mix Paratha</h3>
+        <div class="price">₹120</div>
+        <p>Loaded multi-veg stuffing with butter and pickle.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Mix%20Paratha%20(₹120)">ORDER NOW ↗</a>
+    </article>
+  </div>
+
+  <!-- Category 3: Quick Bites -->
+  <div class="category-title">🍝 Quick Bites</div>
+  <div class="menu-scroll-container">
+    <article class="card">
+      <div>
+        <div class="emoji">🍜</div>
+        <h3>Maggi</h3>
+        <div class="price">₹50</div>
+        <p>Hot and spicy classic homestyle Maggi.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Maggi%20(₹50)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🍛</div>
+        <h3>Fried Rice</h3>
+        <div class="price">₹85</div>
+        <p>Tossed with fresh veggies and aromatic spices.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Fried%20Rice%20(₹85)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🍝</div>
+        <h3>Pasta</h3>
+        <div class="price">₹85</div>
+        <p>Delicious creamy or tangy vegetable pasta.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Pasta%20(₹85)">ORDER NOW ↗</a>
+    </article>
+  </div>
+
+  <!-- Category 4: Roti & Breads -->
+  <div class="category-title">🫓 Roti & Breads</div>
+  <div class="menu-scroll-container">
+    <article class="card">
+      <div>
+        <div class="emoji">🫓</div>
+        <h3>Tawa Roti</h3>
+        <div class="price">₹7</div>
+        <p>Fresh whole wheat soft phulkas.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Tawa%20Roti%20(₹7)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🫓</div>
+        <h3>Butter Roti</h3>
+        <div class="price">₹10</div>
+        <p>Soft wheat roti brushed with fresh butter.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Butter%20Roti%20(₹10)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🫓</div>
+        <h3>Tandoori Roti</h3>
+        <div class="price">₹15</div>
+        <p>Traditional clay oven baked roti.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20want%20to%20order%20Tandoori%20Roti%20(₹15)">ORDER NOW ↗</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <div class="emoji">🫓</div>
+        <h3>Naan</h3>
+        <div class="price">₹25</div>
+        <p>Soft and fluffy restaurant-style naan.</p>
+      </div>
+      <a class="order" href="https://wa.me/917889505893?text=I%20value%20Naan%20(₹25)">ORDER NOW ↗</a>
+    </article>
+  </div>
+</section>
+
+<section class="special" id="about">
+  <h2>Food that feels like home. 💚</h2>
+  <p class="subtitle">Homely taste • Freshly prepared • Affordable options</p>
+  <p>We also take enquiries for kitty parties and small events.</p>
+  <a class="btn" href="#contact">Plan Your Event</a>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2>Let's make it delicious!</h2>
+    <p>Call or WhatsApp to order your meal or discuss a small event.</p>
+    <p>📍 Near Uttam ITI, Sangiwan, Kanpur</p>
+    <p>📞 7889505893</p>
+    <p>📞 9140857814</p>
+    <p>🕓 Mon–Sat: 4 PM–9 PM<br>Sunday: 10 AM–9 PM</p>
+    <a class="btn orange" href="https://wa.me/917889505893?text=Hello%2C%20I%20want%20to%20place%20an%20order">Chat on WhatsApp ↗</a>
+    <a class="btn" href="tel:7889505893">Call Now</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  🍱 AI Tiffin & Event Services · Sangiwan, Kanpur<br>
+  © <span id="year"></span> All rights reserved.
+</footer>
+
+<a class="float" href="https://wa.me/917889505893">✆ WhatsApp</a>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
